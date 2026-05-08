@@ -47,6 +47,9 @@ Version Control	Git
 Monitoring	Prometheus, Grafana
 Logging	ELK Stack
 CI/CD	GitLab Runner
+
+---
+
 📁 Project Structure
 interactive-devops-stack/
 ├── inventory.ini
@@ -74,15 +77,24 @@ interactive-devops-stack/
         │   └── redis.yml
         └── vars/
             └── main.yml
+
+---
+
 ⚙️ Requirements
 Ubuntu 22.04 / 24.04
 Ansible installed
 SSH access to server
 Sudo privileges
 Internet connection
+
+---
+
 🛠 Install Ansible
 sudo apt update
 sudo apt install ansible -y
+
+---
+
 🖥 Configure Inventory
 inventory.ini
 [servers]
@@ -92,9 +104,16 @@ Example:
 
 [servers]
 server1 ansible_host=65.2.10.20 ansible_user=ubuntu
+
+---
+
 ▶️ Run Playbook
 ansible-playbook -i inventory.ini playbook.yml
+
+---
+
 📌 Example Output
+
 Do you want to install Nginx? (yes/no): yes
 → Installing Nginx...
 
@@ -103,6 +122,10 @@ Do you want to install Docker? (yes/no): yes
 
 Do you want to install MongoDB? (yes/no): no
 → Skipping MongoDB...
+
+
+---
+
 🧠 Advantages
 Saves server resources
 Avoids unnecessary installations
@@ -110,6 +133,9 @@ Faster setup process
 Interactive automation
 Easy for beginners
 Reusable Ansible role structure
+
+---
+
 🚀 Future Improvements
 Jenkins support
 GitHub Actions Runner support
