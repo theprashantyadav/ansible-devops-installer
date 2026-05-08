@@ -1,0 +1,71 @@
+---
+- name: Install dependencies
+  apt:
+    name:
+      - apt-transport-https
+      - openjdk-21-jdk
+      - wget
+      - gnupg
+    state: present
+    update_cache: yes
+
+- name: Create keyrings directory
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Download Elastic GPG key
+  shell: |
+    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | \
+    gpg --dearmor -o /etc/apt/keyrings/elastic.gpg
+  args:
+    creates: /etc/apt/keyrings/elastic.gpg
+
+- name: Set Elastic key permissions
+  file:
+    path: /etc/apt/keyrings/elastic.gpg
+    mode: '0644'
+
+- name: Add Elastic repository
+  copy:
+    dest: /etc/apt/sources.list.d/elastic-8.x.list
+    content: |
+      deb [signed-by=/etc/apt/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install Elasticsearch
+  apt:
+    name: elasticsearch
+    state: latest
+
+- name: Install Logstash
+  apt:
+    name: logstash
+    state: latest
+
+- name: Install Kibana
+  apt:
+    name: kibana
+    state: latest
+
+- name: Enable Elasticsearch
+  service:
+    name: elasticsearch
+    state: started
+    enabled: yes
+
+- name: Enable Logstash
+  service:
+    name: logstash
+    state: started
+    enabled: yes
+
+- name: Enable Kibana
+  service:
+    name: kibana
+    state: started
+    enabled: yes

@@ -21,3 +21,20 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+
+---
+
+# `.gitignore`
+
+```gitignore id="v7k4qm"
+.retry
+*.log
+.env
+.vscode/
+.idea/
+*.pem
+*.key
+*.crt
+*.pub
+__pycache__/

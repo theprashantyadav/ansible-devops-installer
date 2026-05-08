@@ -1,0 +1,9 @@
+---
+- name: Install PHP
+  apt:
+    name:
+      - php
+      - php-fpm
+      - php-cli
+      - php-mysql
+    state: latest

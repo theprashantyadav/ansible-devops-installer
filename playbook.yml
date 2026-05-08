@@ -1,0 +1,7 @@
+---
+- name: Interactive DevOps Stack Installation
+  hosts: servers
+  become: yes
+
+  roles:
+    - devops_stack

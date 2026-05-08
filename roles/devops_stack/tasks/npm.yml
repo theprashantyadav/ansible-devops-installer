@@ -1,0 +1,9 @@
+---
+- name: Verify npm installation
+  command: npm -v
+  register: npm_version
+  ignore_errors: yes
+
+- name: Show npm version
+  debug:
+    msg: "npm version installed: {{ npm_version.stdout }}"

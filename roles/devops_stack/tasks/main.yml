@@ -1,0 +1,197 @@
+---
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+#################################################
+# NGINX
+#################################################
+
+- name: Ask for Nginx installation
+  pause:
+    prompt: "Do you want to install Nginx? (yes/no)"
+  register: nginx_input
+
+- include_tasks: nginx.yml
+  when: nginx_input.user_input | lower == 'yes'
+
+#################################################
+# APACHE
+#################################################
+
+- name: Ask for Apache installation
+  pause:
+    prompt: "Do you want to install Apache? (yes/no)"
+  register: apache_input
+
+- include_tasks: apache.yml
+  when: apache_input.user_input | lower == 'yes'
+
+#################################################
+# PHP
+#################################################
+
+- name: Ask for PHP installation
+  pause:
+    prompt: "Do you want to install PHP? (yes/no)"
+  register: php_input
+
+- include_tasks: php.yml
+  when: php_input.user_input | lower == 'yes'
+
+#################################################
+# NODEJS
+#################################################
+
+- name: Ask for Node.js installation
+  pause:
+    prompt: "Do you want to install Node.js? (yes/no)"
+  register: node_input
+
+- include_tasks: nodejs.yml
+  when: node_input.user_input | lower == 'yes'
+
+#################################################
+# PYTHON
+#################################################
+
+- name: Ask for Python installation
+  pause:
+    prompt: "Do you want to install Python? (yes/no)"
+  register: python_input
+
+- include_tasks: python.yml
+  when: python_input.user_input | lower == 'yes'
+
+#################################################
+# JAVA
+#################################################
+
+- name: Ask for Java installation
+  pause:
+    prompt: "Do you want to install Java? (yes/no)"
+  register: java_input
+
+- include_tasks: java.yml
+  when: java_input.user_input | lower == 'yes'
+
+#################################################
+# MYSQL
+#################################################
+
+- name: Ask for MySQL installation
+  pause:
+    prompt: "Do you want to install MySQL? (yes/no)"
+  register: mysql_input
+
+- include_tasks: mysql.yml
+  when: mysql_input.user_input | lower == 'yes'
+
+#################################################
+# POSTGRESQL
+#################################################
+
+- name: Ask for PostgreSQL installation
+  pause:
+    prompt: "Do you want to install PostgreSQL? (yes/no)"
+  register: postgres_input
+
+- include_tasks: postgresql.yml
+  when: postgres_input.user_input | lower == 'yes'
+
+#################################################
+# MONGODB
+#################################################
+
+- name: Ask for MongoDB installation
+  pause:
+    prompt: "Do you want to install MongoDB? (yes/no)"
+  register: mongo_input
+
+- include_tasks: mongodb.yml
+  when: mongo_input.user_input | lower == 'yes'
+
+#################################################
+# REDIS
+#################################################
+
+- name: Ask for Redis installation
+  pause:
+    prompt: "Do you want to install Redis? (yes/no)"
+  register: redis_input
+
+- include_tasks: redis.yml
+  when: redis_input.user_input | lower == 'yes'
+
+#################################################
+# DOCKER
+#################################################
+
+- name: Ask for Docker installation
+  pause:
+    prompt: "Do you want to install Docker? (yes/no)"
+  register: docker_input
+
+- include_tasks: docker.yml
+  when: docker_input.user_input | lower == 'yes'
+
+#################################################
+# KUBERNETES
+#################################################
+
+- name: Ask for Kubernetes installation
+  pause:
+    prompt: "Do you want to install Kubernetes tools? (yes/no)"
+  register: k8s_input
+
+- include_tasks: kubernetes.yml
+  when: k8s_input.user_input | lower == 'yes'
+
+#################################################
+# GIT
+#################################################
+
+- name: Ask for Git installation
+  pause:
+    prompt: "Do you want to install Git? (yes/no)"
+  register: git_input
+
+- include_tasks: git.yml
+  when: git_input.user_input | lower == 'yes'
+
+#################################################
+# PROMETHEUS
+#################################################
+
+- name: Ask for Prometheus installation
+  pause:
+    prompt: "Do you want to install Prometheus? (yes/no)"
+  register: prometheus_input
+
+- include_tasks: prometheus.yml
+  when: prometheus_input.user_input | lower == 'yes'
+
+#################################################
+# GRAFANA
+#################################################
+
+- name: Ask for Grafana installation
+  pause:
+    prompt: "Do you want to install Grafana? (yes/no)"
+  register: grafana_input
+
+- include_tasks: grafana.yml
+  when: grafana_input.user_input | lower == 'yes'
+
+#################################################
+# ELK STACK
+#################################################
+
+- name: Ask for ELK Stack installation
+  pause:
+    prompt: "Do you want to install ELK Stack? (yes/no)"
+  register: elk_input
+
+- include_tasks: elk.yml
+  when: elk_input.user_input | lower == 'yes'
